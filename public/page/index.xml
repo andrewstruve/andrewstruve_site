@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Andrew Struve</title>
+    <link>http://www.example.com/page/</link>
+    <description>Recent content in Pages on Andrew Struve</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="http://www.example.com/page/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://www.example.com/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.example.com/about/</guid>
+      <description>Andrew Struve is a Software Engineer who loves to design excellent software and share his knowledge with others.
+Andrew lives with his wife, 2 banjos, and 5 basses.
+Contact: astruve@gmail.com</description>
+    </item>
+    
+  </channel>
+</rss>
