@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='A common type of app that is always useful is a menu app. We can create a command line application that stays open and we can interact with it. I have used menu based apps to turn on and off pins on a microcontroller.
+We will use python for this application.
+Lets create a menu that does the following things:
+ Set a Start Time (0) Get Time Elasped Since Start Time (1) Get Current time (2) Exit (3)  First we start with declaring our dependencies.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Menu Based Timer App • Andrew Struve'>
+<meta property='og:description' content='A common type of app that is always useful is a menu app. We can create a command line application that stays open and we can interact with it. I have used menu based apps to turn on and off pins on a microcontroller.
+We will use python for this application.
+Lets create a menu that does the following things:
+ Set a Start Time (0) Get Time Elasped Since Start Time (1) Get Current time (2) Exit (3)  First we start with declaring our dependencies.'>
+<meta property='og:url' content='http://www.example.com/posts/menu-based-timer-app/'>
+<meta property='og:site_name' content='Andrew Struve'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='menu-based'><meta property='article:tag' content='timer'><meta property='article:tag' content='python'><meta property='article:published_time' content='2020-10-04T17:07:09-04:00'/><meta property='article:modified_time' content='2020-10-04T17:07:09-04:00'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.75.1" />
+
+  <title>Menu Based Timer App • Andrew Struve</title>
+  <link rel='canonical' href='http://www.example.com/posts/menu-based-timer-app/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-posts'>
+
+  <div class='site'><a class='screen-reader-text' href='#content'>Skip to Content</a><div class='main'><nav id='main-menu' class='menu main-menu' aria-label='Main Menu'>
+  <div class='container'>
+    
+    <ul><li class='item'>
+        <a href='/'>Home</a>
+      </li><li class='item'>
+        <a href='/about/'>About</a>
+      </li></ul>
+  </div>
+</nav><div class='header-widgets'>
+        <div class='container'>
+    
+    <style>.widget-breadcrumbs li:after{content:'\2f '}</style>
+  <section class='widget widget-breadcrumbs sep-after'>
+    <nav id='breadcrumbs'>
+      <ol><li><a href='/'>Home</a></li><li><a href='/posts/'>Posts</a></li><li><span>Menu Based Timer App</span></li></ol>
+    </nav>
+  </section></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Andrew Struve</p><p class='desc site-desc'></p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Menu Based Timer App</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2020-10-04T17:07:09-04:00'>2020, Oct 04</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+
+</svg>
+3 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>A common type of app that is always useful is a menu app. We can create a command line
+application that stays open and we can interact with it. I have used menu based apps to
+turn on and off pins on a microcontroller.</p>
+<p>We will use python for this application.</p>
+<p>Lets create a menu that does the following things:</p>
+<ul>
+<li>Set a Start Time (0)</li>
+<li>Get Time Elasped Since Start Time (1)</li>
+<li>Get Current time (2)</li>
+<li>Exit (3)</li>
+</ul>
+<p>First we start with declaring our dependencies.</p>
+<p>We will need to use the time and sys libraries.</p>
+<pre><code>import sys
+import time
+</code></pre><p>Lets create the menu using a multi-line print:</p>
+<ul>
+<li><a href="https://pythonprogramming.net/multi-line-printing-python-3/">https://pythonprogramming.net/multi-line-printing-python-3/</a></li>
+</ul>
+<pre><code>print('''
+- Set a Start Time (0)
+- Get Time Elasped Since Start Time (1)
+- Get Current time (2)
+- Exit (3) 
+''')
+</code></pre><p>We will need 2 variables, start_time, and elapsed_time.</p>
+<pre><code>start_time = time.time()
+elapsed_time = 0.0
+</code></pre><p>To keep the application from dieing, everything will be enclosed in a while</p>
+<pre><code>while True:
+</code></pre><p>Use the input method to get input from the keyboard. Press enter after a selection is made.</p>
+<pre><code>text = input(&quot;&quot;)
+</code></pre><p>The above code stores whatever we enter into text as a string. we can then use if blocks to
+execute code based on what we enter.</p>
+<pre><code>text = input(&quot;&quot;)
+if ( text == '0'):
+    print(&quot;0 was entered&quot;)
+if ( text == '1')
+    print(&quot;1 was entered&quot;)
+if ( text == '2')
+    print(&quot; 2 was entered&quot;)
+if ( text == '3')
+    print(&quot;3 was entered&quot;)
+</code></pre><p>Our Input is a number between 0 and 3. All other characters mean nothing to us.</p>
+<ul>
+<li>Entering 0 sets the start_time to the current time at the moment 0 is pressed</li>
+<li>Entering 1 calculates the difference between current time and the past</li>
+<li>Entering 2 shows us the current time value.</li>
+<li>Entering 3 exits this application.</li>
+</ul>
+<p>Lets Explore ways to exit this app:</p>
+<ul>
+<li><a href="https://www.geeksforgeeks.org/python-exit-commands-quit-exit-sys-exit-and-os-_exit/">https://www.geeksforgeeks.org/python-exit-commands-quit-exit-sys-exit-and-os-_exit/</a></li>
+</ul>
+<p>I like sys.exit() as it will exit cleanly and print out a message if we choose to pass a message parameter.</p>
+<p>In this case we could easily just use &lsquo;break&rsquo; to exit as well.</p>
+<p>The final code is:</p>
+<pre><code>import sys
+import time
+
+print('''
+- Set a Start Time (0)
+- Get Time Elasped Since Start Time (1)
+- Get Current time (2)
+- Exit (3) 
+''')
+
+start_time = time.time()
+elapsed_time = 0.0
+
+while True:
+    text = input(&quot;&quot;) 
+    if (text == '0'):
+        start_time = time.time()
+        print('start_time = '+ str(start_time))
+    if (text == '1'):
+        elapsed_time = time.time() - start_time
+        print('Time Since Start Time:' + str(elapsed_time))
+    if (text == '2'):
+        cur_time = time.time()
+        print(cur_time)
+    if (text == '3'):
+        sys.exit('exiting app')
+
+</code></pre><p>Example Execution</p>
+<pre><code>[andrew@localhost menu-based-timer-app]$ python3 menu-based-timer-app.py 
+
+- Set a Start Time (0)
+- Get Time Elasped Since Start Time (1)
+- Get Current time (2)
+- Exit (3) 
+
+0
+start_time = 1602342431.9504595
+1
+Time Since Start Time:4.488875865936279
+1
+Time Since Start Time:6.254856586456299
+0
+start_time = 1602342442.3718617
+1
+Time Since Start Time:1.9416639804840088
+1
+Time Since Start Time:3.6616978645324707
+2
+1602342448.1476638
+3
+exiting app
+</code></pre>
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/menu-based/'>menu-based</a>, <a class='tag' href='/tags/timer/'>timer</a>, <a class='tag' href='/tags/python/'>python</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/posts/my-first-post/'>
+        <span aria-hidden='true'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>My First Post</a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/andrewstruve' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:contact@example.com' target='_blank' rel='noopener'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2020 Andrew Struve </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

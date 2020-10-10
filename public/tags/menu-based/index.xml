@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>menu-based on Andrew Struve</title>
+    <link>http://www.example.com/tags/menu-based/</link>
+    <description>Recent content in menu-based on Andrew Struve</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 04 Oct 2020 17:07:09 -0400</lastBuildDate><atom:link href="http://www.example.com/tags/menu-based/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Menu Based Timer App</title>
+      <link>http://www.example.com/posts/menu-based-timer-app/</link>
+      <pubDate>Sun, 04 Oct 2020 17:07:09 -0400</pubDate>
+      
+      <guid>http://www.example.com/posts/menu-based-timer-app/</guid>
+      <description>A common type of app that is always useful is a menu app. We can create a command line application that stays open and we can interact with it. I have used menu based apps to turn on and off pins on a microcontroller.
+We will use python for this application.
+Lets create a menu that does the following things:
+ Set a Start Time (0) Get Time Elasped Since Start Time (1) Get Current time (2) Exit (3)  First we start with declaring our dependencies.</description>
+    </item>
+    
+  </channel>
+</rss>
