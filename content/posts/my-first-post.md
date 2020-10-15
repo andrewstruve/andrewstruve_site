@@ -22,6 +22,7 @@ I work on a WIDE variety of code on Embedded Controllers and PCs.
 - Javascript
 - Shell Scripting
 
+
 - I have built CAN networks for vehicle communication.
 - I have done data analysis on real time network traffic.
 - I have tested simulated vehicles and created html reports. 
